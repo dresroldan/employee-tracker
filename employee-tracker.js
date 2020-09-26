@@ -123,10 +123,122 @@ function viewAllRoles() {
 };
 
 
-function addEmployee() {};
+function selectRole() {
+    let rolesArr = [];
+    connection.query("SELECT * FROM role", function(err, res) {
+        if (err) throw err
+        for (var i = 0; i < res.length; i++) {
+            rolesArr.push(res[i].title);
+        }
+
+    })
+    return rolesArr;
+}
+
+
+
+function selectManager() {
+    let managerArr = [];
+    connection.query("SELECT first_name, last_name FROM employee WHERE manager_id is NULL", function(err, res) {
+        if (err) throw err
+        for (var i = 0; i < res.length; i++) {
+            managerArr.push(res[i].first_name);
+        }
+
+    })
+    return managerArr;
+};
+
+
+function addEmployee() {
+    inquirer.prompt([
+
+        {
+            name: "firstname",
+            type: "input",
+            message: "Enter their first name"
+        },
+
+        {
+            name: "lastname",
+            type: "input",
+            message: "Enter their last name "
+        },
+
+        {
+            name: "role",
+            type: "list",
+            message: "What is their role?",
+            choices: selectRole()
+        },
+
+        {
+            name: "choice",
+            type: "rawlist",
+            message: "What's their managers name?",
+            choices: selectManager()
+        }
+
+    ]).then(function(response) {
+        var roleId = selectRole().indexOf(response.role) + 1
+        var managerId = selectManager().indexOf(response.choice) + 1
+        connection.query("INSERT INTO employee SET ?",
+
+            {
+                first_name: response.firstName,
+                last_name: response.lastName,
+                role_id: roleId,
+                manager_id: managerId,
+
+
+            },
+            function(err) {
+                if (err) throw err
+                console.table(response);
+                mainMenu();
+
+
+            })
+
+
+
+
+
+
+
+    });
+
+
+
+};
 
 function updateEmp() {};
 
-function addDep() {};
+function addDep() {
+
+    inquirer.prompt([{
+        name: "dept_name",
+        type: "input",
+        message: "What department would you like to add?"
+
+    }]).then(function(res) {
+        connection.query("INSERT INTO department SET ?", { dept_name: res.dept_name },
+
+            function(err) {
+                if (err) throw err
+                console.table(res)
+                mainMenu();
+            }
+
+
+
+        )
+
+
+
+    })
+
+
+};
 
 function addRole() {};

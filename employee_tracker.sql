@@ -21,8 +21,8 @@ CREATE TABLE role (
 
 CREATE TABLE employee (
     id INT NOT NULL AUTO_INCREMENT,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
+    first_name VARCHAR(30),
+    last_name VARCHAR(30),
     role_id INT NOT NULL,
     manager_id INT,
     FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE,
