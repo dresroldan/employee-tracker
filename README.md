@@ -21,7 +21,7 @@
   Andrés Roldán
 
   ## Questions:
-  For more questions about the Generator, please contact me at:
+  For more questions about Employee Tracker, please contact me at:
   
   * [Github Profile](http://github.com/dresroldan)
   * dresroldan@gmail.com
