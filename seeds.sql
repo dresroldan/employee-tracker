@@ -9,7 +9,7 @@ VALUES (3, "Finance");
 INSERT INTO department (id, dept_name)
 VALUES (4, "Legal");
 
-USE employee_trackerDB;
+
 
 INSERT INTO role (id, title, salary, department_id)
 VALUES (1, "Sales Lead", 100000, 1);
@@ -26,7 +26,7 @@ VALUES (6, "Legal Team Lead", 250000, 4);
 INSERT INTO role (id, title, salary, department_id)
 VALUES (7, "Lawyer", 190000, 4);
 
-USE employee_trackerDB;
+
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
 VALUES (3, "Robert", "Rodriguez", 3, NULL);
 INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
