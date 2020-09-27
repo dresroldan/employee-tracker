@@ -10,6 +10,8 @@
 
     * Update employee roles
  
+ ![](screenshot.png)
+
  ## Installation:
   * Run 'npm install' to require all dependencies in the terminal
   * Run schema.sql in MYSQLWorkbench 
